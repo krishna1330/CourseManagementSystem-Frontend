@@ -1,0 +1,56 @@
+.container {
+    // margin: 20px auto;
+    max-width: 100%;
+    // margin-bottom: 2px;
+    margin-top: 70px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+    margin-top: -14px;
+    position: relative;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background-color: #007D97;
+    color: #ffffff;
+}
+
+.table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+h2 {
+    color: #007D97;
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 20px;
+    //text-align: center;
+}
+
+.addUser {
+    margin-right: 22px;
+    color: #007D97;
+    border: none;
+    background-color: white;
+    size: 10px;
+}

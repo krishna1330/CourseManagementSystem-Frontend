@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Masters</h2>
+        <!-- <h2 class="mb-0 addUser"><i class="fas fa-user-plus"></i></h2> -->
+        <button class="mb-0 addUser" (click)="btnShowModal()"><i class="fas fa-user-plus"></i></button>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email ID</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let master of masters">
+                    <td>{{ master.masterFirstName }}</td>
+                    <td>{{ master.masterLastName }}</td>
+                    <td>{{ master.masterEmailId }}</td>
+                    <td>{{ master.masterMobile }}</td>
+                    <td style="color: #007D97;"><i class="fa-solid fa-user-pen"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" role="dialog" [style.display]="showModal ? 'block' : 'none'">
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addMasterModalLabel">Add Master</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <form >
+                    <div class="form-group">
+                        <label for="fName" class="inputLabel">First Name</label>
+                        <input type="text" id="fName" class="form-control" placeholder="Enter your first name"
+                            formControlName="firstName" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lName" class="inputLabel">Last Name</label>
+                        <input type="text" id="lName" class="form-control" placeholder="Enter your last name"
+                            formControlName="lastName" />
+                    </div>
+                    <div class="form-group">
+                        <label for="emailAdd" class="inputLabel">Email address</label>
+                        <input type="email" id="emailAdd" class="form-control" placeholder="Enter your email"
+                            formControlName="email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="inputLabel">Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Enter your password"
+                            formControlName="password" />
+                    </div>
+                </form> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

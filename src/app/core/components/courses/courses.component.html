@@ -1,0 +1,18 @@
+<div class="search-container">
+    <input type="text" class="search-input" placeholder="Search courses..." [(ngModel)]="searchText" (input)="applyFilter()">
+    <!-- <button class="create-button">Create New Course</button> -->
+</div>
+
+<div class="courses-container">
+    <div class="course-card" *ngFor="let course of filteredCourses">
+        <img [src]="'data:image/jpg;base64,' + course.thumbnail" class="course-thumbnail" alt="Course Thumbnail">
+        <div class="course-details">
+            <h3 class="course-title">{{ course.courseName }}</h3>
+            <p class="course-instructor">Instructor: {{ course.masterName }}</p>
+            <p class="course-price">Price: ${{ course.coursePrice }}</p>
+            <p class="course-language">Language: {{ course.courseLanguage }}</p>
+            <p class="course-duration">Duration: {{ course.courseAccessDurationInMonths }} months</p>
+            <button class="enroll-button">Enroll Now</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<header class="header">
+    <div class="container">
+        <h1 class="app-title"><a routerLink="/home">Murali Technologies</a></h1>
+        <nav>
+            <ul class="nav-links">
+                <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
+                <li routerLinkActive="active" *ngIf="userType() === 'Student' || userType() == ''"><a
+                        routerLink="/courses">Courses</a></li>
+                <li routerLinkActive="active" *ngIf="userType() === 'Master'"><a routerLink="/masterCourses">My
+                        Courses</a></li>
+                <li routerLinkActive="active" *ngIf="userType() === 'Admin'"><a routerLink="/masters">Masters</a></li>
+                <li routerLinkActive="active" *ngIf="!isLoggedIn()"><a routerLink="/login">Login</a></li>
+                <li *ngIf="isLoggedIn()">
+                    <div class="dropdown">
+                        <button class="dropbtn"><i class="fa-solid fa-user"></i> Account</button>
+                        <div class="dropdown-content">
+                            <a href="#">Profile</a>
+                            <a (click)="logout()">Log out</a>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap">
+<div class="main-container">
+    <div class="vertical-left">
+        <form [formGroup]="signupForm">
+            <div class="formDiv">
+                <p class="getStartedNow">Get started now</p>
+
+                <div class="name-container">
+                    <div>
+                        <label for="fName" class="inputLabel">First Name</label>
+                        <input type="text" id="fName" class="userNameTxt" placeholder="Enter your first name"
+                            autocomplete="off" formControlName="firstName" />
+
+                        <div *ngIf="signupForm.controls['firstName'].invalid && (signupForm.controls['firstName'].dirty || signupForm.controls['firstName'].touched)"
+                            class="error-messages-password">
+                            <div *ngIf="signupForm.controls['firstName'].errors?.['required']">
+                                First name is required.
+                            </div>
+                            <div *ngIf="signupForm.controls['firstName'].errors?.['maxlength']">
+                                First name should not exceed more than 20 characters.
+                            </div>
+                            <div *ngIf="signupForm.controls['firstName'].errors?.['invalidFirstName']">
+                                First name should not contain special characters.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="lName" class="inputLabel">Last Name</label>
+                        <input type="text" id="lName" class="userNameTxt" placeholder="Enter your last name"
+                            autocomplete="off" formControlName="lastName" />
+
+                        <div *ngIf="signupForm.controls['lastName'].invalid && (signupForm.controls['lastName'].dirty || signupForm.controls['lastName'].touched)"
+                            class="error-messages-password">
+                            <div *ngIf="signupForm.controls['lastName'].errors?.['required']">
+                                Last name is required.
+                            </div>
+                            <div *ngIf="signupForm.controls['lastName'].errors?.['maxlength']">
+                                Last name should not exceed more than 20 characters.
+                            </div>
+                            <div *ngIf="signupForm.controls['lastName'].errors?.['invalidLastName']">
+                                Last name should not contain special characters.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-10">
+                    <label for="emailAdd" class="inputLabel">Email address</label>
+                    <input type="text" id="emailAdd" class="txt" placeholder="Enter your email" autocomplete="off"
+                        formControlName="emailId" />
+
+                    <div *ngIf="signupForm.controls['emailId'].invalid && (signupForm.controls['emailId'].dirty || signupForm.controls['emailId'].touched)"
+                        class="error-messages-password">
+                        <div *ngIf="signupForm.controls['emailId'].errors?.['required']">Email address is required.
+                        </div>
+                        <div *ngIf="signupForm.controls['emailId'].errors?.['email']">Please enter a valid email
+                            address.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-10">
+                    <label for="password" class="inputLabel">Password</label>
+                    <input type="password" id="password" class="txt" placeholder="Enter your password"
+                        formControlName="password" />
+
+                    <div *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)"
+                        class="error-messages-password">
+                        <div *ngIf="signupForm.controls['password'].errors?.['required']">Password is required.</div>
+                        <div *ngIf="signupForm.controls['password'].errors?.['minlength']">Password should be at least 8
+                            characters long.</div>
+                        <div *ngIf="signupForm.controls['password'].errors?.['maxlength']">Password should not exceed
+                            more
+                            than 12 characters.</div>
+                        <div
+                            *ngIf="!signupForm.controls['password'].errors?.['minlength'] && !signupForm.controls['password'].errors?.['maxlength'] && signupForm.controls['password'].errors?.['passwordStrength']">
+                            Password must include uppercase, lowercase, numeric, and special characters.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-10">
+                    <label for="cPassword" class="inputLabel">Confirm Password</label>
+                    <input type="password" id="cPassword" class="txt" placeholder="Re-enter your password"
+                        formControlName="confirmPassword" />
+
+                    <div *ngIf="signupForm.controls['confirmPassword'].invalid && (signupForm.controls['confirmPassword'].dirty || signupForm.controls['confirmPassword'].touched)"
+                        class="error-messages-password">
+                        <div *ngIf="signupForm.controls['confirmPassword'].errors?.['required']">Confirm Password is
+                            required.</div>
+                        <div *ngIf="signupForm.controls['confirmPassword'].errors?.['passwordMismatch']">Passwords do
+                            not
+                            match.</div>
+                    </div>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="checkbox" class="small-checkbox" formControlName="termsAndPolicy"/>&nbsp;<label for="checkbox"
+                        class="checkboxLabel">I agree to the <a href="#">terms & policy</a></label>
+                </div>
+
+                <button class="btnLogin" (click)="btnSignup()">Signup</button>
+
+                <!-- <div class="pOr">
+                    <span>Or</span>
+                </div>
+
+                <button class="google-signinBtn">
+                    <img src="assets/loginPage/icons8-google 1.png" alt="Google">
+                    <span>&nbsp; Sign in with Google</span>
+                </button>
+
+                <button class="apple-signinBtn">
+                    <img src="assets/loginPage/icons8-apple-logo 1.png" alt="Apple">
+                    <span>&nbsp; Sign in with Apple</span>
+                </button> -->
+
+                <div class="signUp mt-4">
+                    <p>Have an account?</p><a routerLink="/login">Login</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- <div class="vertical-right">
+        <img src="assets/signupPage/Mask group.png" alt="Flowers" class="image-style">
+    </div> -->
+</div>

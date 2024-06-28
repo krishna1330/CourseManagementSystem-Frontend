@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap">
+<div class="main-container">
+    <div class="vertical-left">
+        <form [formGroup]="loginForm">
+            <div class="formDiv">
+                <p>Welcome back!</p>
+                <p>Continue learning by logging in</p>
+                <label for="email" class="emailAndPassword">Email address</label>
+                <br>
+                <input type="text" id="email" class="txt" placeholder="Enter your email" autocomplete="off"
+                    formControlName="email" /><br><br>
+
+                <div *ngIf="loginForm.controls['email'].invalid && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)"
+                    class="error-messages-email">
+                    <div *ngIf="loginForm.controls['email'].errors?.['required']">Email address is required.</div>
+                    <div *ngIf="loginForm.controls['email'].errors?.['email']">Please enter a valid email address.
+                    </div>
+                </div>
+
+
+                <label for="password" class="emailAndPassword">Password</label><a href="#" class="forgetPassword">forgot
+                    password</a>
+                <br>
+                <input type="password" id="password" class="txt" placeholder="Enter your password"
+                    formControlName="password" />
+
+                <div *ngIf="loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+                    class="error-messages-password">
+                    <div *ngIf="loginForm.controls['password'].errors?.['required']">Password is required.</div>
+                    <div *ngIf="loginForm.controls['password'].errors?.['minlength']">Password should be at least 8
+                        characters long.</div>
+                </div>
+
+
+                <br><br>
+                <!-- <input type="checkbox" id="checkbox" class="small-checkbox" />&nbsp;<label for="checkbox"
+                    class="checkboxLabel">Remember me</label><br> -->
+                <button class="btnLogin" (click)="onSubmit()">Login</button>
+
+                <!-- <div class="aLoginPhone">
+                    <a href="#">Login with phone</a>
+                </div>
+                <br>
+                <div class="pOr">
+                    <span>Or</span>
+                </div> -->
+
+                <!-- <button class="google-signinBtn">
+                    <img src="assets/loginPage/icons8-google 1.png" alt="Google">
+                    <span>&nbsp; Sign in with Google</span>
+                </button> -->
+
+                <!-- <button class="apple-signinBtn">
+                    <img src="assets/loginPage/icons8-apple-logo 1.png" alt="Apple">
+                    <span>&nbsp; Sign in with Apple</span>
+                </button> -->
+
+                <div class="signUp mt-5">
+                    <p>Don't have an account?</p><a routerLink="/signup">Sign Up</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
