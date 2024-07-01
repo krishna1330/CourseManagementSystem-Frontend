@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { ILoginResponse } from "../../../models/loginResponse";
+import { ILoginResponse } from "../../../models/loginResponse.model";
 import { HttpErrorResponse } from "@angular/common/http";
 
 export const login = createAction(
