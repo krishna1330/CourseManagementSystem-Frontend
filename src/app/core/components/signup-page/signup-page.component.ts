@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ISignupDetails } from '../../models/signupDetails';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ValidationService } from '../../../shared/services/validation.service';
 import { CommonModule } from '@angular/common';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-import { ISignupResponse } from '../../models/signupResponse';
+import { Store } from '@ngrx/store';
+import { signup } from './store/signup.action';
 
 @Component({
   selector: 'app-signup-page',
@@ -23,12 +22,12 @@ import { ISignupResponse } from '../../models/signupResponse';
 export class SignupPageComponent {
 
   signupForm!: FormGroup;
-  signupDetails: ISignupDetails = { userType: '', firstName: '', lastName: '', emailId: '', password: '' };
 
   formBuilder = inject(FormBuilder);
   validationService = inject(ValidationService);
   authService = inject(AuthService);
   router = inject(Router);
+  store = inject(Store);
 
   constructor() { }
 
@@ -48,31 +47,13 @@ export class SignupPageComponent {
   btnSignup(): void {
     if (this.signupForm.valid) {
 
-      this.signupDetails.userType = "Student";
-      this.signupDetails.firstName = this.signupForm.get('firstName')?.value ?? '';
-      this.signupDetails.lastName = this.signupForm.get('lastName')?.value ?? '';
-      this.signupDetails.emailId = this.signupForm.get('emailId')?.value ?? '';
-      this.signupDetails.password = this.signupForm.get('password')?.value ?? '';
+      const userType = "Student";
+      const firstName = this.signupForm.value.firstName;
+      const lastName = this.signupForm.value.lastName;
+      const emailId = this.signupForm.value.emailId;
+      const password = btoa(this.signupForm.value.password);
 
-      this.authService.signup(this.signupDetails).subscribe({
-
-        next: (response: HttpResponse<ISignupResponse>) => {
-          if (response.status === 200) {
-            alert(response.body);
-            this.router.navigate(['/home']);
-          } else {
-            alert('Signup failed');
-          }
-        },
-
-        error: (error: HttpErrorResponse) => {
-          if (error.status === 409) {
-            alert(error.error);
-          } else {
-            alert('Signup failed with status: ' + error.status);
-          }
-        }
-      });
+      this.store.dispatch(signup({ userType, firstName, lastName, emailId, password }));
     }
 
     else {

@@ -1,5 +1,7 @@
 import { authReducer } from "../core/components/login/store/auth.reducer";
+import { signupReducer } from "../core/components/signup-page/store/signup.reducer";
 
 export const appReducer = {
-    auth: authReducer
+    auth: authReducer,
+    signup: signupReducer
 }

@@ -10,6 +10,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { appReducer } from './store/app.reducer';
 import { AuthEffect } from './core/components/login/store/auth.effect';
+import { SignupEffect } from './core/components/signup-page/store/signup.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(withInterceptors([authInterceptor])),
     provideStore(appReducer),
-    provideEffects([AuthEffect]),
+    provideEffects([AuthEffect, SignupEffect]),
     provideStoreDevtools({ logOnly: !isDevMode() })
-]
+  ]
 };

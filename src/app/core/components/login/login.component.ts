@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid) {
       const emailId = this.loginForm.value.email;
-      const password = this.loginForm.value.password;
+      const password = btoa(this.loginForm.value.password);
       this.store.dispatch(login({ emailId, password }));
 
     } else {

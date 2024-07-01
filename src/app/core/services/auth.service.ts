@@ -2,8 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ILoginResponse } from '../models/loginResponse.model';
-import { ISignupDetails } from '../models/signupDetails';
-import { ISignupResponse } from '../models/signupResponse';
+import { ISignupResponse } from '../models/signupResponse.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,23 +14,9 @@ export class AuthService {
 
   constructor() { }
 
-  // login(credentials: ILoginCredentials): Observable<HttpResponse<ILoginResponse>> {
-  //   return this.httpClient.post<ILoginResponse>(this.baseUrl + 'Auth/Login', credentials, { observe: 'response' })
-  //     .pipe(tap((response: HttpResponse<ILoginResponse>) => {
-  //       if (response.status === 200 && this.isBrowser()) {
-  //         localStorage.setItem('token', response.body?.token ?? '');
-  //         localStorage.setItem('userId', response.body?.userId.toString() ?? '');
-  //         localStorage.setItem('userType', response.body?.userType ?? '');
-  //         localStorage.setItem('firstName', response.body?.firstName ?? '');
-  //         localStorage.setItem('lastName', response.body?.lastName ?? '');
-  //         localStorage.setItem('emailId', response.body?.emailId ?? '');
-  //         localStorage.setItem('mobile', response.body?.mobile ?? '');
-  //       }
-  //     }));
-  // }
-
   login(emailId: string, password: string): Observable<HttpResponse<ILoginResponse>> {
-    return this.httpClient.post<ILoginResponse>(this.baseUrl + 'Auth/Login', { emailId, password }, { observe: 'response' });
+    return this.httpClient.post<ILoginResponse>(this.baseUrl + 'Auth/Login',
+      { emailId, password }, { observe: 'response' });
   }
 
   saveToLocalStorage(user: ILoginResponse) {
@@ -86,12 +71,10 @@ export class AuthService {
 
   }
 
-  // signup(details: ISignupDetails): Observable<HttpResponse<string>> {
-  //   return this.httpClient.post<string>(this.baseUrl + 'Users/AddUser', details, { observe: 'response', responseType: 'text' as 'json' });
-  // }
-
-  signup(details: ISignupDetails): Observable<HttpResponse<ISignupResponse>> {
-    return this.httpClient.post<ISignupResponse>(this.baseUrl + 'Users/AddUser', details, { observe: 'response', responseType: 'text' as 'json' });
+  signup(userType: string, firstName: string, lastName: string, emailId: string, password: string): Observable<HttpResponse<ISignupResponse>> {
+    return this.httpClient.post<ISignupResponse>(this.baseUrl + 'Users/AddUser',
+      { userType, firstName, lastName, emailId, password },
+      { observe: 'response', responseType: 'text' as 'json' });
   }
 
   isBrowser(): boolean {
