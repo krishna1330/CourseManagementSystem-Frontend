@@ -1,7 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { ILoginCredentials } from '../models/loginCredentials';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ILoginResponse } from '../models/loginResponse';
 import { ISignupDetails } from '../models/signupDetails';
 import { ISignupResponse } from '../models/signupResponse';
@@ -16,19 +15,35 @@ export class AuthService {
 
   constructor() { }
 
-  login(credentials: ILoginCredentials): Observable<HttpResponse<ILoginResponse>> {
-    return this.httpClient.post<ILoginResponse>(this.baseUrl + 'Auth/Login', credentials, { observe: 'response' })
-      .pipe(tap((response: HttpResponse<ILoginResponse>) => {
-        if (response.status === 200 && this.isBrowser()) {
-          localStorage.setItem('token', response.body?.token ?? '');
-          localStorage.setItem('userId', response.body?.userId.toString() ?? '');
-          localStorage.setItem('userType', response.body?.userType ?? '');
-          localStorage.setItem('firstName', response.body?.firstName ?? '');
-          localStorage.setItem('lastName', response.body?.lastName ?? '');
-          localStorage.setItem('emailId', response.body?.emailId ?? '');
-          localStorage.setItem('mobile', response.body?.mobile ?? '');
-        }
-      }));
+  // login(credentials: ILoginCredentials): Observable<HttpResponse<ILoginResponse>> {
+  //   return this.httpClient.post<ILoginResponse>(this.baseUrl + 'Auth/Login', credentials, { observe: 'response' })
+  //     .pipe(tap((response: HttpResponse<ILoginResponse>) => {
+  //       if (response.status === 200 && this.isBrowser()) {
+  //         localStorage.setItem('token', response.body?.token ?? '');
+  //         localStorage.setItem('userId', response.body?.userId.toString() ?? '');
+  //         localStorage.setItem('userType', response.body?.userType ?? '');
+  //         localStorage.setItem('firstName', response.body?.firstName ?? '');
+  //         localStorage.setItem('lastName', response.body?.lastName ?? '');
+  //         localStorage.setItem('emailId', response.body?.emailId ?? '');
+  //         localStorage.setItem('mobile', response.body?.mobile ?? '');
+  //       }
+  //     }));
+  // }
+
+  login(emailId: string, password: string): Observable<HttpResponse<ILoginResponse>> {
+    return this.httpClient.post<ILoginResponse>(this.baseUrl + 'Auth/Login', { emailId, password }, { observe: 'response' });
+  }
+
+  saveToLocalStorage(user: ILoginResponse) {
+    if (user != null) {
+      localStorage.setItem('token', user.token);
+      localStorage.setItem('userId', user.userId.toString());
+      localStorage.setItem('userType', user.userType);
+      localStorage.setItem('firstName', user.firstName);
+      localStorage.setItem('lastName', user.lastName);
+      localStorage.setItem('emailId', user.emailId);
+      localStorage.setItem('mobile', user.mobile);
+    }
   }
 
   logout() {
@@ -78,8 +93,8 @@ export class AuthService {
   signup(details: ISignupDetails): Observable<HttpResponse<ISignupResponse>> {
     return this.httpClient.post<ISignupResponse>(this.baseUrl + 'Users/AddUser', details, { observe: 'response', responseType: 'text' as 'json' });
   }
-  
-  private isBrowser(): boolean {
+
+  isBrowser(): boolean {
     return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
 }

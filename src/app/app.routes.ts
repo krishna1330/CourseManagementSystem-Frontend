@@ -5,7 +5,7 @@ import { LoginComponent } from './core/components/login/login.component';
 import { MastersComponent } from './core/components/masters/masters.component';
 import { authGuard } from './core/guards/auth.guard';
 import { SignupPageComponent } from './core/components/signup-page/signup-page.component';
-import { MasterCoursesComponent } from './core/master-courses/master-courses.component';
+import { MasterCoursesComponent } from './core/components/master-courses/master-courses.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },

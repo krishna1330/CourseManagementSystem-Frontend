@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ICourses } from '../models/courses';
-import { MasterCoursesService } from '../services/master-courses.service';
+import { ICourses } from '../../models/courses';
+import { MasterCoursesService } from '../../services/master-courses.service';
 import { HTTP_INTERCEPTORS, HttpResponse } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { authInterceptor } from '../intercepors/auth.interceptor';
-import { AuthService } from '../services/auth.service';
+import { authInterceptor } from '../../intercepors/auth.interceptor';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-master-courses',
