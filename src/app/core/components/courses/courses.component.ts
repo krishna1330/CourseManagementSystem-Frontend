@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CoursesService } from '../../services/courses.service';
-import { ICourses } from '../../models/courses';
+import { ICourses } from '../../models/courses.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store, select } from '@ngrx/store';

@@ -7,7 +7,5 @@ export interface ICourses {
     courseAccessDurationInMonths: number;
     courseLanguage: string;
     courseCreatedDate: Date;
-    thumbnail: string;
-    isActive: boolean;
-    isDeleted: boolean;
+    thumbnail: string
 }
