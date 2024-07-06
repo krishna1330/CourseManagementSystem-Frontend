@@ -1,7 +1,7 @@
 <div class="course-form">
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <h5 style="margin: 0;">Create new course</h5>
-        <span><i class="fa-solid fa-xmark"></i></span>
+        <span (click)="btnClose()" style="cursor: pointer;"><i class="fa-solid fa-xmark"></i></span>
     </div>
 
     <form [formGroup]="addCourseForm">

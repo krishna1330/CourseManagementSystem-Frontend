@@ -2,7 +2,7 @@
 
 <div class="search-container">
     <input type="text" class="search-input" placeholder="Search courses...">
-    <button class="create-button" (click)="btnCreateCoure()">Create New Course</button>
+    <button class="create-button" (click)="btnCreateCourse()">Create New Course</button>
 </div>
 
 <div class="courses-container" [style.width.%]="initialWidth">
@@ -19,7 +19,6 @@
     </div>
 </div>
 
-
 <div class="add-course" [style.display]="showAddCourse">
-    <router-outlet></router-outlet>
+    <app-add-course (closeEvent)="onClose($event)"></app-add-course>
 </div>

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Store } from '@ngrx/store';
@@ -7,18 +7,20 @@ import { createCourse } from '../../../store/master-courses/master-courses.actio
 @Component({
   selector: 'app-add-course',
   standalone: true,
-  imports: [
-    ReactiveFormsModule
-  ],
+  imports: [ReactiveFormsModule],
   templateUrl: './add-course.component.html',
   styleUrls: ['./add-course.component.scss']
 })
 export class AddCourseComponent implements OnInit {
+  @Output() closeEvent = new EventEmitter<{ initialWidth: number; showAddCourse: string }>();
 
   addCourseForm!: FormGroup;
   formBuilder = inject(FormBuilder);
   authService = inject(AuthService);
   store = inject(Store);
+
+  initialWidth: number = 100;
+  showAddCourse: string = 'none';
 
   ngOnInit() {
     this.addCourseForm = this.formBuilder.group({
@@ -26,8 +28,8 @@ export class AddCourseComponent implements OnInit {
       coursePrice: ['', [Validators.required]],
       courseDuration: ['', [Validators.required]],
       courseLanguage: ['', [Validators.required]],
-      courseThumbnail: [null, [Validators.required]]
-    })
+      courseThumbnail: [null, [Validators.required]],
+    });
   }
 
   onFileChange(event: Event): void {
@@ -35,7 +37,7 @@ export class AddCourseComponent implements OnInit {
     if (input.files && input.files.length) {
       const file = input.files[0];
       this.addCourseForm.patchValue({
-        courseThumbnail: file
+        courseThumbnail: file,
       });
       this.addCourseForm.get('courseThumbnail')!.updateValueAndValidity();
     }
@@ -47,7 +49,6 @@ export class AddCourseComponent implements OnInit {
 
   onSubmit(): void {
     if (this.addCourseForm.valid) {
-      debugger;
       const formData = new FormData();
       formData.append('CourseName', this.addCourseForm.get('courseName')!.value);
       formData.append('MasterId', this.masterId().toString());
@@ -58,5 +59,11 @@ export class AddCourseComponent implements OnInit {
 
       this.store.dispatch(createCourse({ formData }));
     }
+  }
+
+  btnClose(): void {
+    this.initialWidth = 100;
+    this.showAddCourse = 'none';
+    this.closeEvent.emit({ initialWidth: this.initialWidth, showAddCourse: this.showAddCourse });
   }
 }
