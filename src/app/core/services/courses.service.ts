@@ -12,7 +12,15 @@ export class CoursesService {
 
   constructor(private http: HttpClient) { }
 
-  GetCourses():  Observable<HttpResponse<ICourses[]>> {
+  GetCourses(): Observable<HttpResponse<ICourses[]>> {
     return this.http.get<ICourses[]>(this.baseUrl + 'GetCourses', { observe: 'response' });
+  }
+
+  GetMasterCourses(masterId: number): Observable<HttpResponse<ICourses[]>> {
+    return this.http.get<ICourses[]>(this.baseUrl + 'GetMasterCourses?masterId=' + masterId, { observe: 'response' });
+  }
+
+  CreateCourse(formData: FormData): Observable<HttpResponse<ICourses>> {
+    return this.http.post<ICourses>(this.baseUrl + 'CreateCourse', formData, { observe: 'response' });
   }
 }

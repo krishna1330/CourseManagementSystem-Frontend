@@ -1,4 +1,4 @@
-import { ICourses } from "../../../models/courses.model";
+import { ICourses } from "../../core/models/courses.model";
 
 export interface MasterCoursesState {
     courses: ICourses[] | null

@@ -5,7 +5,7 @@
     <button class="create-button" (click)="btnCreateCoure()">Create New Course</button>
 </div>
 
-<div class="courses-container">
+<div class="courses-container" [style.width.%]="initialWidth">
     <div class="course-card" *ngFor="let course of courses">
         <img [src]="'data:image/jpg;base64,' + course.thumbnail" class="course-thumbnail" alt="Course Thumbnail">
         <div class="course-details">
@@ -20,48 +20,6 @@
 </div>
 
 
-<div class="modal" tabindex="-1" role="dialog" [style.display]="showModal ? 'block' : 'none'">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="addAssetTxt">Add Course</h4>
-                <button type="button" class="close" aria-label="Close" (click)="showModal = false">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="name-container">
-                    <div class="form-row">
-                        <div>
-                            <label for="courseName" class="inputLabel">Course Name</label>
-                            <input type="text" id="courseName" class="userNameTxt" placeholder="Enter course name" autocomplete="off" />
-                        </div>
-                        <div>
-                            <label for="courseLanguage" class="inputLabel">Course Language</label>
-                            <input type="text" id="courseLanguage" class="userNameTxt" placeholder="Enter course language" autocomplete="off" />
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div>
-                            <label for="coursePrice" class="inputLabel">Course Price</label>
-                            <input type="text" id="coursePrice" class="userNameTxt" placeholder="Enter course price" autocomplete="off" />
-                        </div>
-                        <div>
-                            <label for="courseAccessDuration" class="inputLabel">Course Access Duration</label>
-                            <input type="text" id="courseAccessDuration" class="userNameTxt" placeholder="Enter course access duration in months" autocomplete="off" />
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <!-- <div class="form-group col-md-12"> -->
-                        <label class="inputLabel">Thumbnail</label>
-                        <input type="file" class="form-control" id="thumbnail">
-                    <!-- </div> -->
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btnAddCourse" id="btnAdd">Add Course</button>
-            </div>
-        </div>
-    </div>
+<div class="add-course" [style.display]="showAddCourse">
+    <router-outlet></router-outlet>
 </div>

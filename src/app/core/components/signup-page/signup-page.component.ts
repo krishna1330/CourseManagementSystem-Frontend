@@ -5,7 +5,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ValidationService } from '../../../shared/services/validation.service';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { signup } from './store/signup.action';
+import { signup } from '../../../store/signup/signup.action';
 
 @Component({
   selector: 'app-signup-page',

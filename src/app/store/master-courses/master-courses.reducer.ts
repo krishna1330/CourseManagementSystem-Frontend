@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { masterCoursesInitialState, MasterCoursesState } from "./master-courses.state";
-import { getMasterCoursesSuccess } from "./master-courses.action";
+import { createCourseSuccess, getMasterCoursesSuccess } from "./master-courses.action";
 
 export const masterCoursesReducer = createReducer(
     masterCoursesInitialState,
@@ -9,6 +9,13 @@ export const masterCoursesReducer = createReducer(
         return {
             ...state,
             courses: action.courses
+        };
+    }),
+
+    on(createCourseSuccess, (state, action): MasterCoursesState => {
+        return {
+            ...state,
+            courses: state.courses ? [...state.courses, action.course] : [action.course]
         };
     })
 );

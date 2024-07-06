@@ -1,7 +1,7 @@
-import { coursesReducer } from "../core/components/courses/store/courses.reducer";
-import { authReducer } from "../core/components/login/store/auth.reducer";
-import { masterCoursesReducer } from "../core/components/master-courses/store/master-courses.reducer";
-import { signupReducer } from "../core/components/signup-page/store/signup.reducer";
+import { authReducer } from "./auth/auth.reducer";
+import { coursesReducer } from "./courses/courses.reducer";
+import { masterCoursesReducer } from "./master-courses/master-courses.reducer";
+import { signupReducer } from "./signup/signup.reducer";
 
 export const appReducer = {
     auth: authReducer,

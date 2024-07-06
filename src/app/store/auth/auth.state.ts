@@ -1,4 +1,4 @@
-import { ILoginResponse } from "../../../models/loginResponse.model";
+import { ILoginResponse } from "../../core/models/loginResponse.model";
 
 export interface AuthState {
     user: ILoginResponse | null

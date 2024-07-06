@@ -1,26 +1,34 @@
 <div class="course-form">
-    <h4>Create new course</h4>
-    <form >
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h5 style="margin: 0;">Create new course</h5>
+        <span><i class="fa-solid fa-xmark"></i></span>
+    </div>
+
+    <form [formGroup]="addCourseForm">
         <div class="form-group">
-            <label for="courseName">Course Name</label>
-            <input type="text" id="courseName" name="courseName" required>
+            <label for="courseName" class="lbl-txt">Course Name</label>
+            <input type="text" id="courseName" name="courseName" placeholder="Enter course name" required
+                formControlName="courseName">
         </div>
         <div class="form-group">
-            <label for="coursePrice">Course Price</label>
-            <input type="number" id="coursePrice" name="coursePrice" required>
+            <label for="coursePrice" class="lbl-txt">Course Price</label>
+            <input type="number" id="coursePrice" name="coursePrice" placeholder="Enter course price" required
+                formControlName="coursePrice">
         </div>
         <div class="form-group">
-            <label for="courseTime">Course Time Period</label>
-            <input type="text" id="courseTime" name="courseTime" required>
+            <label for="courseTime" class="lbl-txt">Course Duration</label>
+            <input type="text" id="courseTime" name="courseTime" placeholder="Enter course duration in months" required
+                formControlName="courseDuration">
         </div>
         <div class="form-group">
-            <label for="courseLanguage">Course Language</label>
-            <input type="text" id="courseLanguage" name="courseLanguage" required>
+            <label for="courseLanguage" class="lbl-txt">Course Language</label>
+            <input type="text" id="courseLanguage" name="courseLanguage" placeholder="Enter course language" required
+                formControlName="courseLanguage">
         </div>
         <div class="form-group">
-            <label for="thumbnail">Course Thumbnail</label>
-            <input type="file" id="thumbnail"  name="thumbnail">
+            <label for="thumbnail" class="lbl-txt">Course Thumbnail</label>
+            <input type="file" id="thumbnail" class="thumbnail" name="thumbnail" (change)="onFileChange($event)">
         </div>
-        <button type="submit">Add Course</button>
+        <button type="submit" (click)="onSubmit()">Add Course</button>
     </form>
 </div>

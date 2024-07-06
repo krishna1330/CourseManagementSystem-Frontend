@@ -39,6 +39,7 @@ export class AuthService {
     localStorage.removeItem('lastName');
     localStorage.removeItem('emailId');
     localStorage.removeItem('mobile');
+    window.location.reload();
   }
 
   isLoggedIn() {

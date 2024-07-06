@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from "@angular/common/http";
 import { createAction, props } from "@ngrx/store";
-import { ICourses } from "../../../models/courses.model";
+import { ICourses } from "../../core/models/courses.model";
 
 export const getCourses = createAction('[courses] get courses');
 

@@ -14,6 +14,10 @@
     position: relative;
 }
 
+.lbl-txt {
+    font-size: 12px;
+}
+
 .form-group input[type="text"],
 .form-group input[type="number"] {
     width: 100%;
@@ -23,7 +27,8 @@
     border-bottom: 2px solid #ddd;
     background: none;
     outline: none;
-    font-size: 16px;
+    font-size: 13px;
+    height: 25px;
 }
 
 .form-group input[type="file"] {
@@ -47,16 +52,21 @@
     color: #aaa;
 }
 
-button[type="submit"] {
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.thumbnail {
+    size: 20px;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+button[type="submit"] {
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #007d97;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: -webkit-fill-available
 }
+
+// button[type="submit"]:hover {
+//     background-color: #0056b3;
+// }

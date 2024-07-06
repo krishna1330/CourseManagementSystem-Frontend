@@ -4,9 +4,9 @@ import { ICourses } from '../../models/courses.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
-import { getCourses } from './store/courses.action';
+import { getCourses } from '../../../store/courses/courses.action';
 import { Observable } from 'rxjs';
-import { selectAllCourses } from './store/courses.selector';
+import { selectAllCourses } from '../../../store/courses/courses.selector';
 import { filter } from 'rxjs/operators';
 
 @Component({

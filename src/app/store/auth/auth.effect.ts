@@ -1,10 +1,10 @@
 import { Injectable, inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { AuthService } from "../../../services/auth.service";
+import { AuthService } from "../../core/services/auth.service";
 import { login, loginFailure, loginSuccess } from "./auth.action";
 import { catchError, exhaustMap, map, of, tap } from "rxjs";
-import { ILoginResponse } from "../../../models/loginResponse.model";
+import { ILoginResponse } from "../../core/models/loginResponse.model";
 import { HttpErrorResponse } from "@angular/common/http";
 
 @Injectable()

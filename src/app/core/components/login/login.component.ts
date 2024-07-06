@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { login } from './store/auth.action';
+import { login } from '../../../store/auth/auth.action';
 
 @Component({
   selector: 'app-login',

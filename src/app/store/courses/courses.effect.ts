@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store, select } from '@ngrx/store';
-import { CoursesService } from "../../../services/courses.service";
+import { CoursesService } from "../../core/services/courses.service";
 import { getCourses, getCoursesFailure, getCoursesSuccess } from "./courses.action";
 import { catchError, map, mergeMap, of, tap, withLatestFrom } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
