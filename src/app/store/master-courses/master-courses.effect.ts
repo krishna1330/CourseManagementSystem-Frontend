@@ -57,7 +57,7 @@ export class MasterCoursesEffect {
                             if (response.status === 200) {
                                 alert('Course created successuuly');
                                 const course: ICourses = {
-                                    courseId: response.body?.courseId ?? 0,
+                                    courseID: response.body?.courseID    ?? 0,
                                     courseName: response.body?.courseName ?? '',
                                     masterId: response.body?.masterId ?? 0,
                                     masterName: response.body?.masterName ?? '',

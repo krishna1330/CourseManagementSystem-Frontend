@@ -55,4 +55,8 @@ export class MasterCoursesComponent implements OnInit {
     this.initialWidth = event.initialWidth;
     this.showAddCourse = event.showAddCourse;
   }
+
+  onViewCourse(courseId: number): void {
+    
+  }
 }

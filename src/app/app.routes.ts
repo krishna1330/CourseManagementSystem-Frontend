@@ -7,6 +7,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { SignupPageComponent } from './core/components/signup-page/signup-page.component';
 import { MasterCoursesComponent } from './core/components/master-courses/master-courses.component';
 import { AddCourseComponent } from './core/components/add-course/add-course.component';
+import { CourseContentComponent } from './core/components/course-content/course-content.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,4 +22,5 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [{ path: 'addCourse', component: AddCourseComponent }],
   },
+  { path: 'courseContent', component: CourseContentComponent, canActivate: [authGuard] }
 ];

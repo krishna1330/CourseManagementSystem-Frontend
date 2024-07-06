@@ -14,7 +14,7 @@
             <p class="course-price">Price: ${{ course.coursePrice }}</p>
             <p class="course-language">Language: {{ course.courseLanguage }}</p>
             <p class="course-duration">Duration: {{ course.courseAccessDurationInMonths }} months</p> -->
-            <button class="enroll-button">View Course</button>
+            <button class="enroll-button" (click)="onViewCourse(course.courseID)">View Course</button>
         </div>
     </div>
 </div>
