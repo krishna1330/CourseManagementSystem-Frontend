@@ -55,6 +55,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    text-align: center;
 }
 
 .course-thumbnail {
@@ -85,8 +86,8 @@
     width: 100%;
     padding: 10px;
     border: none;
-    border-radius: 4px;
-    background-color: #007bff;
+    border-radius: 10px;
+    background-color: #007d97;
     color: #fff;
     font-size: 1rem;
     text-align: center;
@@ -94,9 +95,9 @@
     transition: background-color 0.3s;
 }
 
-.enroll-button:hover {
-    background-color: #0056b3;
-}
+// .enroll-button:hover {
+//     background-color: #0056b3;
+// }
 
 
 
@@ -204,7 +205,7 @@
 
 .add-course {
     position: absolute;
-    margin-top: -440px;
+    margin-top: -120px;
     margin-left: 1020px;
     // top: 50px;
     // left: 1020px;
